@@ -11,6 +11,10 @@
 /.nova
 /.phpunit.cache
 /.vscode
+/.github
+/.gemini
+/.claude
+/.agents
 /.zed
 /auth.json
 /node_modules
@@ -25,3 +29,9 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+CLAUDE.md 
+AGENTS.md
+.mcp.json
+GEMINI.md
+.npmrc
+boost.json
