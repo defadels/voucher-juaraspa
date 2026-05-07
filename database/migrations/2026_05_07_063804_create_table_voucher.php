@@ -16,11 +16,14 @@ return new class extends Migration
             $table->string('kode_voucher')->nullable(false);
             $table->string('qr_code_path')->nullable(false);
             $table->date('tgl_terbit')->nullable(false);
-            $table->unsignedBigInteger("user_id")->nullable(false);
+            $table->unsignedBigInteger("pelanggan_id")->nullable(false);
+            $table->unsignedBigInteger("admin_id")->nullable(false);
             $table->unsignedBigInteger("kategori_id")->nullable(false);
             $table->timestamps();
             $table->enum('status', ['aktif','terpakai'])->default('aktif');
             $table->foreign("kategori_id")->on("kategori_voucher")->references("id");
+            $table->foreign("pelanggan_id")->on("users")->references("id");
+            $table->foreign("admin_id")->on("users")->references("id");
         });
     }
 
