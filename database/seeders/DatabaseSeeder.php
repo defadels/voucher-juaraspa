@@ -63,12 +63,17 @@ class DatabaseSeeder extends Seeder
         // Buat voucher untuk pelanggan utama
         $allPelanggan = collect([$pelanggan1, $pelanggan2, $pelanggan3])->merge($pelangganLain);
 
+        $qrService = new \App\Services\QrCodeService();
+
         foreach ($allPelanggan as $pelanggan) {
             $jumlah = rand(2, 5);
             for ($i = 1; $i <= $jumlah; $i++) {
                 $kategori = $kategoris->random();
                 $kode = 'JPS-'.str_pad($kategori->id, 2, '0', STR_PAD_LEFT).'-'.str_pad($pelanggan->id * 10 + $i, 4, '0', STR_PAD_LEFT);
                 $status = ($i <= 2) ? 'terpakai' : 'aktif';
+                
+                // Generate physical QR Code SVG file
+                $qrService->generate($kode);
 
                 $voucher = Voucher::create([
                     'kode_voucher' => $kode,

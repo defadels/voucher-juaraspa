@@ -37,6 +37,14 @@ class VoucherFactory extends Factory
         ];
     }
 
+    public function configure(): static
+    {
+        return $this->afterCreating(function (Voucher $voucher) {
+            $qrService = new \App\Services\QrCodeService();
+            $qrService->generate($voucher->kode_voucher);
+        });
+    }
+
     public function aktif(): static
     {
         return $this->state(fn (array $attributes) => ['status' => 'aktif']);

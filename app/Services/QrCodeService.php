@@ -12,16 +12,16 @@ class QrCodeService
      */
     public function generate(string $kodeVoucher): string
     {
-        $path = 'public/qrcodes/'.$kodeVoucher.'.svg';
+        $path = 'qrcodes/'.$kodeVoucher.'.svg';
 
-        if (! Storage::exists($path)) {
-            Storage::makeDirectory('public/qrcodes');
+        if (! Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->makeDirectory('qrcodes');
 
             $svgContent = $this->generateSvgQrCode($kodeVoucher);
-            Storage::put($path, $svgContent);
+            Storage::disk('public')->put($path, $svgContent);
         }
 
-        return 'qrcodes/'.$kodeVoucher.'.svg';
+        return $path;
     }
 
     /**
