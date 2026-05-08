@@ -43,7 +43,8 @@
                                     {{ $v->kategori?->nama_kategori }}</div>
                                 <div class="w-16 h-16 mx-auto mb-3 opacity-80 group-hover:opacity-100 transition-opacity">
                                     @if (Storage::disk('public')->exists($v->qr_code_path))
-                                        {!! file_get_contents(public_path('storage/' . $v->qr_code_path)) !!}
+                                        <img src="{{ asset('storage/' . $v->qr_code_path) }}" alt="QR Code"
+                                            class="w-full h-full object-contain">
                                     @else
                                         <div
                                             class="w-16 h-16 bg-gray-100 rounded flex items-center justify-center text-gray-400">
