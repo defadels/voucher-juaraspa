@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\KategoriVoucher;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Voucher extends Model
 {
+    use HasFactory;
     protected $table = 'voucher';
-    protected $primaryKey = 'id';
-    protected $keyType = "int";
-    public $incrementing = true;
-    public $timestamp = true;
 
+    /** @var list<string> */
     public $fillable = [
         'kode_voucher',
         'kategori_id',
@@ -22,18 +20,36 @@ class Voucher extends Model
         'admin_id',
         'qr_code_path',
         'tgl_terbit',
-        'status'
+        'status',
     ];
 
-    public function pelanggan(): BelongsTo {
+    public function pelanggan(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'pelanggan_id', 'id');
     }
-  
-    public function admin(): BelongsTo {
+
+    public function admin(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'admin_id', 'id');
     }
 
-    public function kategori(): BelongsTo {
+    public function kategori(): BelongsTo
+    {
         return $this->belongsTo(KategoriVoucher::class, 'kategori_id', 'id');
+    }
+
+    public function usages(): HasMany
+    {
+        return $this->hasMany(VoucherUsage::class, 'voucher_id', 'id');
+    }
+
+    public function isAktif(): bool
+    {
+        return $this->status === 'aktif';
+    }
+
+    public function isTerpakai(): bool
+    {
+        return $this->status === 'terpakai';
     }
 }

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('tgl_digunakan')->nullable(false);
             $table->string('keterangan')->nullable(false);
-            $table->unsignedBigInteger("voucher_id")->nullable(false);
-            $table->foreign("voucher_id")->on("voucher")->references("id");
+            $table->unsignedBigInteger('voucher_id')->nullable(false);
+            $table->foreign('voucher_id')->on('voucher')->references('id');
             $table->timestamps();
         });
     }

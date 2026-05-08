@@ -3,23 +3,28 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Voucher;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class VoucherUsage extends Model
 {
     protected $table = 'voucher_usage';
-    protected $primaryKey = 'id';
-    protected $keyType = "int";
-    public $incrementing = true;
-    public $timestamp = true;
 
+    /** @var list<string> */
     public $fillable = [
         'voucher_id',
         'tgl_digunakan',
-        'keterangan'
+        'keterangan',
     ];
 
-    public function voucher(): BelongsTo {
+    protected function casts(): array
+    {
+        return [
+            'tgl_digunakan' => 'date',
+        ];
+    }
+
+    public function voucher(): BelongsTo
+    {
         return $this->belongsTo(Voucher::class, 'voucher_id', 'id');
     }
 }
