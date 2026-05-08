@@ -2,20 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class KategoriVoucher extends Model
 {
+    use HasFactory;
     protected $table = 'kategori_voucher';
-    protected $primaryKey = 'id';
-    protected $keyType = "int";
-    protected $timestamp = true;
-    public $incrementing = true;
 
+    /** @var list<string> */
     public $fillable = [
         'nama_kategori',
-        'deskripsi'
+        'deskripsi',
     ];
 
-
+    public function vouchers(): HasMany
+    {
+        return $this->hasMany(Voucher::class, 'kategori_id', 'id');
+    }
 }

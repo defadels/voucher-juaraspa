@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->string('nomor_telepon')->nullable(false);
-            $table->enum('role', ['pelanggan','admin'])->default('pelanggan');
+            $table->enum('role', ['pelanggan', 'admin'])->default('pelanggan');
         });
     }
 
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table){
-            $table->enum('role', ['pelanggan','admin'])->default('pelanggan');
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('role', ['pelanggan', 'admin'])->default('pelanggan');
         });
     }
 };

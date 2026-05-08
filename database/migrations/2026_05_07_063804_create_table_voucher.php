@@ -11,19 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('kategori_voucher', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_kategori')->nullable(false);
+            $table->string('deskripsi')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('voucher', function (Blueprint $table) {
             $table->id();
             $table->string('kode_voucher')->nullable(false);
             $table->string('qr_code_path')->nullable(false);
             $table->date('tgl_terbit')->nullable(false);
-            $table->unsignedBigInteger("pelanggan_id")->nullable(false);
-            $table->unsignedBigInteger("admin_id")->nullable(false);
-            $table->unsignedBigInteger("kategori_id")->nullable(false);
+            $table->unsignedBigInteger('pelanggan_id')->nullable(false);
+            $table->unsignedBigInteger('admin_id')->nullable(false);
+            $table->unsignedBigInteger('kategori_id')->nullable(false);
             $table->timestamps();
-            $table->enum('status', ['aktif','terpakai'])->default('aktif');
-            $table->foreign("kategori_id")->on("kategori_voucher")->references("id");
-            $table->foreign("pelanggan_id")->on("users")->references("id");
-            $table->foreign("admin_id")->on("users")->references("id");
+            $table->enum('status', ['aktif', 'terpakai'])->default('aktif');
+            $table->foreign('kategori_id')->on('kategori_voucher')->references('id');
+            $table->foreign('pelanggan_id')->on('users')->references('id');
+            $table->foreign('admin_id')->on('users')->references('id');
         });
     }
 
@@ -32,6 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('kategori_voucher');
         Schema::dropIfExists('voucher');
     }
 };
