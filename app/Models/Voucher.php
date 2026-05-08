@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Voucher extends Model
 {
     use HasFactory;
+
     protected $table = 'voucher';
 
     /** @var list<string> */

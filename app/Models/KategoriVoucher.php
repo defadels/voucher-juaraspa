@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class KategoriVoucher extends Model
 {
     use HasFactory;
+
     protected $table = 'kategori_voucher';
 
     /** @var list<string> */

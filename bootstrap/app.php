@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => EnsureRole::class,
         ]);
+
+        $middleware->redirectGuestsTo(fn ($request) => 
+            $request->is('pelanggan*') ? route('pelanggan.login') : route('admin.login')
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\KategoriVoucher;
 use App\Models\User;
 use App\Models\Voucher;
+use App\Services\QrCodeService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -40,7 +41,7 @@ class VoucherFactory extends Factory
     public function configure(): static
     {
         return $this->afterCreating(function (Voucher $voucher) {
-            $qrService = new \App\Services\QrCodeService();
+            $qrService = new QrCodeService;
             $qrService->generate($voucher->kode_voucher);
         });
     }

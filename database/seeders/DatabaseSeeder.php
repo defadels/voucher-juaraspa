@@ -6,6 +6,7 @@ use App\Models\KategoriVoucher;
 use App\Models\User;
 use App\Models\Voucher;
 use App\Models\VoucherUsage;
+use App\Services\QrCodeService;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -63,7 +64,7 @@ class DatabaseSeeder extends Seeder
         // Buat voucher untuk pelanggan utama
         $allPelanggan = collect([$pelanggan1, $pelanggan2, $pelanggan3])->merge($pelangganLain);
 
-        $qrService = new \App\Services\QrCodeService();
+        $qrService = new QrCodeService;
 
         foreach ($allPelanggan as $pelanggan) {
             $jumlah = rand(2, 5);
@@ -71,7 +72,7 @@ class DatabaseSeeder extends Seeder
                 $kategori = $kategoris->random();
                 $kode = 'JPS-'.str_pad($kategori->id, 2, '0', STR_PAD_LEFT).'-'.str_pad($pelanggan->id * 10 + $i, 4, '0', STR_PAD_LEFT);
                 $status = ($i <= 2) ? 'terpakai' : 'aktif';
-                
+
                 // Generate physical QR Code SVG file
                 $qrService->generate($kode);
 
