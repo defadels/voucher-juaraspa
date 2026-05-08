@@ -13,7 +13,12 @@ class ScanController extends Controller
 {
     public function index(): View
     {
-        return view('admin.voucher.scan');
+        $logHariIni = VoucherUsage::with(['voucher.pelanggan', 'voucher.kategori'])
+            ->whereDate('created_at', now()->toDateString())
+            ->latest()
+            ->paginate(10);
+
+        return view('admin.voucher.scan', compact('logHariIni'));
     }
 
     public function validasi(Request $request): JsonResponse
