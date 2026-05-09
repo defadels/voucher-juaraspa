@@ -52,11 +52,11 @@ class DatabaseSeeder extends Seeder
 
         // Kategori Voucher
         $kategoriData = [
-            ['nama_kategori' => 'Relaksasi', 'deskripsi' => 'Pijat relaksasi seluruh tubuh'],
-            ['nama_kategori' => 'Body Scrub', 'deskripsi' => 'Scrub tubuh dengan bahan alami'],
-            ['nama_kategori' => 'Facial', 'deskripsi' => 'Perawatan wajah profesional'],
-            ['nama_kategori' => 'Manicure', 'deskripsi' => 'Perawatan kuku tangan'],
-            ['nama_kategori' => 'Pedicure', 'deskripsi' => 'Perawatan kuku kaki'],
+            ['nama_kategori' => 'Juara Massage', 'prefix' => 'JM1', 'deskripsi' => 'Pijat relaksasi seluruh tubuh'],
+            ['nama_kategori' => 'Body Scrub', 'prefix' => 'BS2', 'deskripsi' => 'Scrub tubuh dengan bahan alami'],
+            ['nama_kategori' => 'Thai Herbal', 'prefix' => 'TH2', 'deskripsi' => 'Perawatan wajah profesional'],
+            ['nama_kategori' => 'Manicure', 'prefix' => 'MN1', 'deskripsi' => 'Perawatan kuku tangan'],
+            ['nama_kategori' => 'Pedicure', 'prefix' => 'PD1', 'deskripsi' => 'Perawatan kuku kaki'],
         ];
 
         $kategoris = collect($kategoriData)->map(fn ($k) => KategoriVoucher::create($k));
@@ -64,27 +64,18 @@ class DatabaseSeeder extends Seeder
         // Buat voucher untuk pelanggan utama
         $allPelanggan = collect([$pelanggan1, $pelanggan2, $pelanggan3])->merge($pelangganLain);
 
-        $qrService = new QrCodeService;
-
         foreach ($allPelanggan as $pelanggan) {
-            $jumlah = rand(2, 5);
+            $jumlah = rand(2, 4);
             for ($i = 1; $i <= $jumlah; $i++) {
                 $kategori = $kategoris->random();
-                $kode = 'JPS-'.str_pad($kategori->id, 2, '0', STR_PAD_LEFT).'-'.str_pad($pelanggan->id * 10 + $i, 4, '0', STR_PAD_LEFT);
-                $status = ($i <= 2) ? 'terpakai' : 'aktif';
+                $status = ($i === 1) ? 'terpakai' : 'aktif';
 
-                // Generate physical QR Code SVG file
-                $qrService->generate($kode);
-
-                $voucher = Voucher::create([
-                    'kode_voucher' => $kode,
-                    'qr_code_path' => 'qrcodes/'.$kode.'.svg',
-                    'tgl_terbit' => now()->subDays(rand(1, 90))->format('Y-m-d'),
+                $voucher = Voucher::factory()->state([
                     'pelanggan_id' => $pelanggan->id,
                     'admin_id' => $admin->id,
                     'kategori_id' => $kategori->id,
                     'status' => $status,
-                ]);
+                ])->create();
 
                 if ($status === 'terpakai') {
                     VoucherUsage::create([

@@ -4,7 +4,7 @@
 
 @section('content')
 {{-- Stat Cards --}}
-<div class="grid grid-cols-4 gap-4 mb-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
     @foreach([
         ['label' => 'Total Pelanggan', 'value' => $totalPelanggan, 'badge' => '+3 bulan ini'],
         ['label' => 'Total Voucher', 'value' => $totalVoucher, 'badge' => '+20 bulan ini'],
@@ -19,7 +19,7 @@
     @endforeach
 </div>
 
-<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
     {{-- Grafik 7 Hari --}}
     <div class="bg-white rounded-xl border border-gray-200 p-5">
         <h3 class="text-sm font-semibold text-gray-700 mb-4">Pemakaian 7 hari terakhir</h3>
@@ -64,36 +64,38 @@
 </div>
 
 {{-- Pelanggan Aktif --}}
-<div class="bg-white rounded-xl border border-gray-200 p-5">
+<div class="bg-white rounded-xl border border-gray-200 p-5 overflow-hidden">
     <div class="flex items-center justify-between mb-4">
         <h3 class="text-sm font-semibold text-gray-700">Pelanggan aktif</h3>
         <a href="{{ route('admin.pelanggan.index') }}" class="text-xs font-medium bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg transition-colors">Lihat semua</a>
     </div>
-    <table class="w-full text-sm">
-        <thead>
-            <tr class="text-xs text-gray-400 border-b border-gray-100">
-                <th class="text-left pb-2 font-medium">Nama</th>
-                <th class="text-left pb-2 font-medium">Voucher Aktif</th>
-                <th class="text-left pb-2 font-medium">Terpakai</th>
-                <th class="text-left pb-2 font-medium">Status</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-50">
-            @forelse($pelangganAktif as $p)
-            <tr class="hover:bg-gray-50 transition-colors">
-                <td class="py-2.5">
-                    <a href="{{ route('admin.pelanggan.show', $p) }}" class="font-medium text-gray-900 hover:underline">{{ $p->name }}</a>
-                </td>
-                <td class="py-2.5 text-gray-600">{{ $p->voucher_aktif_count }}</td>
-                <td class="py-2.5 text-gray-600">{{ $p->voucher_terpakai_count }}</td>
-                <td class="py-2.5">
-                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border border-green-300 text-green-700">Aktif</span>
-                </td>
-            </tr>
-            @empty
-            <tr><td colspan="4" class="py-4 text-center text-gray-400 text-sm">Belum ada pelanggan aktif.</td></tr>
-            @endforelse
-        </tbody>
-    </table>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="text-xs text-gray-400 border-b border-gray-100">
+                    <th class="text-left pb-2 font-medium whitespace-nowrap">Nama</th>
+                    <th class="text-left pb-2 font-medium whitespace-nowrap">Voucher Aktif</th>
+                    <th class="text-left pb-2 font-medium whitespace-nowrap">Terpakai</th>
+                    <th class="text-left pb-2 font-medium whitespace-nowrap">Status</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @forelse($pelangganAktif as $p)
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="py-2.5 whitespace-nowrap">
+                        <a href="{{ route('admin.pelanggan.show', $p) }}" class="font-medium text-gray-900 hover:underline">{{ $p->name }}</a>
+                    </td>
+                    <td class="py-2.5 text-gray-600">{{ $p->voucher_aktif_count }}</td>
+                    <td class="py-2.5 text-gray-600">{{ $p->voucher_terpakai_count }}</td>
+                    <td class="py-2.5">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border border-green-300 text-green-700">Aktif</span>
+                    </td>
+                </tr>
+                @empty
+                <tr><td colspan="4" class="py-4 text-center text-gray-400 text-sm">Belum ada pelanggan aktif.</td></tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection
