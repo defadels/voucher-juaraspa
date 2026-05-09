@@ -15,6 +15,7 @@ class KategoriVoucher extends Model
     /** @var list<string> */
     public $fillable = [
         'nama_kategori',
+        'prefix',
         'deskripsi',
     ];
 

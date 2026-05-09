@@ -25,7 +25,8 @@ class VoucherFactory extends Factory
         $kategori = KategoriVoucher::inRandomOrder()->first()
             ?? KategoriVoucher::factory()->create();
 
-        $kode = 'JPS-'.str_pad($kategori->id, 2, '0', STR_PAD_LEFT).'-'.str_pad(fake()->unique()->numberBetween(1, 9999), 4, '0', STR_PAD_LEFT);
+        $prefix = $kategori->prefix ?: 'VCH';
+        $kode = strtoupper($prefix).fake()->unique()->numberBetween(10000000, 99999999);
 
         return [
             'kode_voucher' => $kode,

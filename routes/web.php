@@ -49,6 +49,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('scan/validasi', [ScanController::class, 'validasi'])->name('scan.validasi');
         Route::post('scan/gunakan', [ScanController::class, 'gunakan'])->name('scan.gunakan');
 
+        // Kategori Voucher management
+        Route::resource('kategori-voucher', \App\Http\Controllers\Admin\KategoriVoucherController::class)->names('kategori-voucher');
+
         // Laporan
         Route::get('laporan', [LaporanController::class, 'index'])->name('laporan');
 

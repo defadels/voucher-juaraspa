@@ -3,9 +3,9 @@
 @section('page-title', 'Beranda')
 
 @section('content')
-    <div class="grid grid-cols-3 gap-6 mb-8">
-        <div class="col-span-2">
-            <div class="grid grid-cols-3 gap-4 mb-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="lg:col-span-2">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
                     <div class="text-3xl font-bold text-gray-900">{{ $voucherAktif->count() }}</div>
                     <div class="text-sm font-medium text-gray-500 mt-1">Voucher Aktif</div>
@@ -35,7 +35,7 @@
                         Belum ada voucher aktif.
                     </div>
                 @else
-                    <div class="grid grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         @foreach ($voucherAktif->take(4) as $v)
                             <a href="{{ route('pelanggan.voucher.show', $v) }}"
                                 class="block p-4 border border-gray-200 rounded-xl hover:border-gray-400 transition-colors text-center group">
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-span-1">
+        <div class="lg:col-span-1">
             <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm h-full">
                 <h2 class="text-base font-semibold text-gray-800 mb-5">Notifikasi</h2>
 

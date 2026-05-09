@@ -64,8 +64,10 @@ class VoucherController extends Controller
         $jumlahBaru = (int) $validated['jumlah'];
 
         for ($i = 0; $i < $jumlahBaru; $i++) {
-            $urutan = Voucher::where('kategori_id', $kategori->id)->count() + 1;
-            $kode = 'JPS-'.str_pad($kategori->id, 2, '0', STR_PAD_LEFT).'-'.str_pad($urutan, 4, '0', STR_PAD_LEFT);
+            $prefix = $kategori->prefix ?: 'VCH';
+            do {
+                $kode = strtoupper($prefix).mt_rand(10000000, 99999999);
+            } while (Voucher::where('kode_voucher', $kode)->exists());
 
             $qrPath = $this->qrCodeService->generate($kode);
 
