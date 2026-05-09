@@ -66,6 +66,7 @@
     <main class="flex-1 flex items-center justify-center p-6 sm:p-12 overflow-y-auto">
         <div class="w-full max-w-md">
             {{-- Mobile Branding --}}
+
             <div class="md:hidden flex items-center justify-center gap-3">
                 <img src="{{ asset('logo.png') }}" alt="Logo Juara SPA"
                     class="w-32 h-auto mb-8 rounded-full shadow-lg border-2 border-white/20">
