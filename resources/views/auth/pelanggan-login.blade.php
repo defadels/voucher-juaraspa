@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="text-xs text-white/25">&copy; 2025 Juara SPA · Medan</div>
+        <div class="text-xs text-white/25">&copy; {{ now()->year }} Juara SPA · Medan</div>
     </aside>
 
     {{-- RIGHT FORM --}}
@@ -91,7 +91,7 @@
                             clip-rule="evenodd" />
                     </svg>
                     <span><strong>Informasi</strong><br>Akun dibuat oleh admin Juara SPA. Belum punya akun? Hubungi
-                        Juara SPA di <strong>0812-xxxx-xxxx</strong></span>
+                        Juara SPA di <strong>0853-6620-6336</strong></span>
                 </div>
             </div>
 
