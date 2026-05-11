@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="text-xs text-white/25">&copy; 2026 Juara SPA · Medan</div>
+        <div class="text-xs text-white/25">&copy; {{ now()->year }} Juara SPA · Medan</div>
     </aside>
 
     {{-- RIGHT FORM --}}
