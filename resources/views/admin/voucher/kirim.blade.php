@@ -55,7 +55,7 @@
         </form>
     </div>
 
-    <div class="bg-white rounded-xl border border-gray-200 p-6">
+    {{-- <div class="bg-white rounded-xl border border-gray-200 p-6">
         <h2 class="text-sm font-semibold text-gray-700 mb-4">Ringkasan & Info</h2>
         <div class="space-y-3">
             <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 text-sm">
@@ -77,6 +77,6 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
