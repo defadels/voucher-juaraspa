@@ -14,10 +14,10 @@
                     <div class="text-3xl font-bold text-gray-900">{{ $voucherTerpakai->count() }}</div>
                     <div class="text-sm font-medium text-gray-500 mt-1">Sudah Digunakan</div>
                 </div>
-                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                {{-- <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
                     <div class="text-3xl font-bold text-gray-900">{{ $voucherExpired->count() }}</div>
                     <div class="text-sm font-medium text-gray-500 mt-1">Expired</div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
