@@ -12,7 +12,20 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Lato', ...defaultTheme.fontFamily.sans],
+                serif: ['Lusitana', ...defaultTheme.fontFamily.serif],
+                lato: ['Lato', 'sans-serif'],
+                lusitana: ['Lusitana', 'serif'],
+            },
+            colors: {
+                spa: {
+                    cream: '#F6EFDE',
+                    'cream-light': '#FAF6ED',
+                    dark: '#2A2421',
+                    'dark-muted': '#635752',
+                    gold: '#C5A059',
+                    'gold-dark': '#9E7B3B',
+                },
             },
         },
     },
