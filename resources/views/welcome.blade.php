@@ -289,7 +289,7 @@
                 <!-- Treatment 2 -->
                 <div class="bg-[#FAF6ED] rounded-xl overflow-hidden border border-[#E8DFC9] shadow-md hover:shadow-xl transition-all flex flex-col group">
                     <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1591343393582-fc92b963b652?auto=format&fit=crop&w=600&q=80" 
+                        <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&w=600&q=80" 
                              alt="Thai Herbal Treatment" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <span class="absolute top-3 right-3 text-xs bg-[#9E7B3B] text-white px-3 py-1 rounded-full font-semibold shadow">
@@ -364,7 +364,7 @@
                 <!-- Treatment 5 -->
                 <div class="bg-[#FAF6ED] rounded-xl overflow-hidden border border-[#E8DFC9] shadow-md hover:shadow-xl transition-all flex flex-col group">
                     <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1519824145371-296894a0da96?auto=format&fit=crop&w=600&q=80" 
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80" 
                              alt="Reflexology Treatment" 
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <span class="absolute top-3 right-3 text-xs bg-[#9E7B3B] text-white px-3 py-1 rounded-full font-semibold shadow">
