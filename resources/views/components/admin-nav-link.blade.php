@@ -3,8 +3,8 @@
 <a href="{{ $href }}"
    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-150
    {{ $active
-      ? 'bg-white text-gray-900 font-medium shadow-sm'
-      : 'text-white/70 hover:text-white hover:bg-white/10' }}">
+      ? 'bg-[#C5A059]/20 text-[#F6EFDE] font-medium border-l-2 border-[#C5A059]'
+      : 'text-[#F6EFDE]/60 hover:text-[#F6EFDE] hover:bg-[#C5A059]/10' }}">
 
     {{-- Icons --}}
     @if($icon === 'grid')
