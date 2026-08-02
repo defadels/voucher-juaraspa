@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Juara SPA - Portal Voucher Digital Pelanggan">
     <title>@yield('title', 'Beranda') – Portal Pelanggan Juara SPA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body class="bg-[#f5f5f0] font-sans text-gray-900 flex h-screen overflow-hidden" x-data="{ sidebarOpen: false }">
+<body class="bg-[#F6EFDE] text-[#2A2421] flex h-screen overflow-hidden" style="font-family: 'Lato', sans-serif;" x-data="{ sidebarOpen: false }">
 
     {{-- OVERLAY FOR MOBILE --}}
     <div x-show="sidebarOpen" 
@@ -27,23 +24,23 @@
     </div>
 
     {{-- SIDEBAR --}}
-    <aside class="fixed inset-y-0 left-0 z-50 w-[250px] min-w-[250px] bg-[#1a1a1a] text-white flex flex-col h-full overflow-y-auto transition-transform duration-300 transform lg:translate-x-0 lg:static lg:inset-auto"
+    <aside class="fixed inset-y-0 left-0 z-50 w-[250px] min-w-[250px] bg-[#2A2421] text-[#F6EFDE] flex flex-col h-full overflow-y-auto transition-transform duration-300 transform lg:translate-x-0 lg:static lg:inset-auto"
            x-bind:class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'">
         {{-- Brand --}}
-        <div class="px-6 pt-8 pb-6 border-b border-white/10 flex items-center gap-3">
-            <img src="{{ asset('logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full border border-white/10 shadow-sm">
+        <div class="px-6 pt-8 pb-6 border-b border-[#C5A059]/30 flex items-center gap-3">
+            <img src="{{ asset('logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full border border-[#C5A059]/30 shadow-sm">
             <div>
-                <div class="text-xl font-bold tracking-tight">Juara SPA</div>
-                <div class="text-xs text-white/50 mt-0.5">Portal Pelanggan</div>
+                <div class="text-lg font-bold tracking-widest uppercase" style="font-family: 'Lusitana', Georgia, serif;">Juara SPA</div>
+                <div class="text-[10px] tracking-widest uppercase text-[#C5A059]/70 mt-0.5">Portal Pelanggan</div>
             </div>
-            <button x-on:click="sidebarOpen = false" class="lg:hidden text-white/50 hover:text-white">
+            <button x-on:click="sidebarOpen = false" class="lg:hidden text-[#C5A059]/60 hover:text-[#C5A059]">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
 
         {{-- Navigation --}}
         <nav class="flex-1 px-3 py-5 space-y-0.5">
-            <p class="px-3 mb-2 text-[10px] font-semibold uppercase tracking-widest text-white/30">Menu</p>
+            <p class="px-3 mb-2 text-[10px] font-semibold uppercase tracking-widest text-[#C5A059]/50">Menu</p>
             <x-pelanggan-nav-link :href="route('pelanggan.beranda')" :active="request()->routeIs('pelanggan.beranda')" icon="home">
                 Beranda
             </x-pelanggan-nav-link>
@@ -54,7 +51,7 @@
                 Riwayat
             </x-pelanggan-nav-link>
 
-            <p class="px-3 mt-5 mb-2 text-[10px] font-semibold uppercase tracking-widest text-white/30">Akun</p>
+            <p class="px-3 mt-5 mb-2 text-[10px] font-semibold uppercase tracking-widest text-[#C5A059]/50">Akun</p>
             <x-pelanggan-nav-link :href="route('pelanggan.profil')" :active="request()->routeIs('pelanggan.profil')" icon="user">
                 Profil Saya
             </x-pelanggan-nav-link>
@@ -64,10 +61,10 @@
         </nav>
 
         {{-- Logout --}}
-        <div class="px-3 py-5 border-t border-white/10">
+        <div class="px-3 py-5 border-t border-[#C5A059]/20">
             <form method="POST" action="{{ route('pelanggan.logout') }}">
                 @csrf
-                <button type="submit" class="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/10 transition-colors">
+                <button type="submit" class="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm text-[#C5A059]/60 hover:text-[#F6EFDE] hover:bg-[#C5A059]/20 transition-colors">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                     </svg>
@@ -80,16 +77,16 @@
     {{-- MAIN CONTENT --}}
     <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
         {{-- Topbar --}}
-        <header class="bg-white border-b border-gray-200 px-4 lg:px-8 py-4 flex items-center justify-between flex-shrink-0">
+        <header class="bg-[#FAF6ED] border-b border-[#E8DFC9] px-4 lg:px-8 py-4 flex items-center justify-between flex-shrink-0">
             <div class="flex items-center gap-4">
-                <button x-on:click="sidebarOpen = true" class="p-2 -ml-2 text-gray-500 lg:hidden">
+                <button x-on:click="sidebarOpen = true" class="p-2 -ml-2 text-[#9E7B3B] lg:hidden">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
-                <h1 class="text-base lg:text-lg font-semibold text-gray-900 truncate">@yield('page-title', 'Beranda')</h1>
+                <h1 class="text-base lg:text-lg font-semibold text-[#2A2421] truncate">@yield('page-title', 'Beranda')</h1>
             </div>
             <div class="flex items-center gap-3">
-                <span class="text-sm text-gray-600 hidden sm:inline-block">{{ auth()->user()->name }}</span>
-                <div class="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm font-semibold">
+                <span class="text-sm text-[#635752] hidden sm:inline-block">{{ auth()->user()->name }}</span>
+                <div class="w-8 h-8 rounded-full bg-[#2A2421] text-[#F6EFDE] flex items-center justify-center text-sm font-semibold border border-[#C5A059]/30">
                     {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                 </div>
             </div>
@@ -97,14 +94,14 @@
 
         {{-- Flash messages --}}
         @if(session('success'))
-            <div class="mx-4 lg:mx-8 mt-4 p-3 bg-green-50 border border-green-200 text-green-800 rounded-lg text-sm flex items-center gap-2">
-                <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <div class="mx-4 lg:mx-8 mt-4 p-3 bg-[#F6EFDE] border border-[#C5A059]/40 text-[#2A2421] rounded-lg text-sm flex items-center gap-2">
+                <svg class="w-4 h-4 flex-shrink-0 text-[#9E7B3B]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                 {{ session('success') }}
             </div>
         @endif
 
         {{-- Page Content --}}
-        <main class="flex-1 overflow-y-auto p-4 lg:p-8">
+        <main class="flex-1 overflow-y-auto p-4 lg:p-8 bg-[#F6EFDE]">
             @yield('content')
         </main>
     </div>
