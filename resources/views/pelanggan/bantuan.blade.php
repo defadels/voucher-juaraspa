@@ -61,7 +61,7 @@
                 </div>
                 <h3 class="text-xl font-bold mb-2">Butuh bantuan lebih lanjut?</h3>
                 <p class="text-white/70 text-sm mb-6">Tim Juara SPA siap membantu keluhan Anda terkait voucher</p>
-                <a href="https://wa.me/6285366206336" target="_blank"
+                <a href="https://wa.me/6285266206336" target="_blank"
                     class="inline-flex items-center gap-2 bg-white text-gray-900 font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
                     Hubungi via WhatsApp
                 </a>
